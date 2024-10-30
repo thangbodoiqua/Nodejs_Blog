@@ -11,9 +11,11 @@ app.use(morgan('combined'));
 //template engine
 app.engine('hbs', engine({
   extname: '.hbs'
-})); 
+}));  
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources/views')); // Đảm bảo có thư mục views
+app.use(express.static(path.join(__dirname, 'public'))); //Sử dụng thư mục public
+
 app.get('/', (req, res) => {
   return res.render('home');
 })
